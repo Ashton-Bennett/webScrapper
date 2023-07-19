@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "name": "pastest",
+  "version": "1.0.0",
+  "main": "getAnchorTags.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashton Bennett",
+  "license": "ISC",
+  "description": ""
+}
