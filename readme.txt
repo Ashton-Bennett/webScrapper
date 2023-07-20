@@ -1,8 +1,8 @@
-# Web Scraper using Node.js
+Web Scraper using Node.js
 
 This is a simple web scraper tool created using the Axios and Cheerio libraries to extract information from a hard-coded website.
 
-## Usage
+Usage
 
 To run the web scraper, make sure you have Node.js installed on your system. Then, follow these steps:
 
@@ -13,4 +13,4 @@ To extract <a> urls, type the following command: node getAnchorTags.
 
 To extract text from <p> type the following command: node getAnchorTags paragraphs.
 
-To change the site that the data is gather from see line 41.
+To change the site that the data is gathered from see line 41.
