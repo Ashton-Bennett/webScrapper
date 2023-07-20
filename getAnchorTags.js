@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-async function downloadWebPage(url) {
+const downloadWebPage = async (url) => {
   try {
     const response = await axios.get(url);
     return response.data;
@@ -9,9 +9,9 @@ async function downloadWebPage(url) {
     console.error(`Error downloading the web page: ${error}`);
     return null;
   }
-}
+};
 
-function extractLinks(html) {
+const extractLinks = (html) => {
   const $ = cheerio.load(html);
   const links = [];
 
@@ -22,17 +22,36 @@ function extractLinks(html) {
     }
   });
   return links;
-}
+};
 
-async function main() {
+const extractParagraphs = (html) => {
+  const $ = cheerio.load(html);
+  const paragraphs = [];
+
+  $("p").each((index, element) => {
+    const href = $(element).text();
+    if (href) {
+      paragraphs.push(href);
+    }
+  });
+  return paragraphs;
+};
+
+const main = async () => {
   const url = "https://pacer.uscourts.gov/";
-
   const html = await downloadWebPage(url);
+
   if (html) {
-    const links = extractLinks(html);
-    console.log("Links on the page:");
-    console.log(links[0]);
+    if (process.argv[2] === "paragraphs") {
+      const paragraphs = extractParagraphs(html);
+      console.log("Paragraphs on the page:");
+      console.log(paragraphs);
+    } else {
+      const links = extractLinks(html);
+      console.log("Links on the page:");
+      console.log(links);
+    }
   }
-}
+};
 
 main();
