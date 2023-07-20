@@ -34,6 +34,7 @@ const extractParagraphs = (html) => {
       paragraphs.push(href);
     }
   });
+
   return paragraphs;
 };
 
